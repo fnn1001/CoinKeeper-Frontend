@@ -4,7 +4,6 @@ import authService from "../../services/auth.service";
 import "./SignupPage.css"; // Import your CSS file
 import PasswordRequirements from "../../components/PasswordRequirements/PasswordRequirements";
 
-
 function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
