@@ -31,11 +31,7 @@ function Navbar() {
         <>
           <Link to="/signup">
             {" "}
-            <button>Sign Up</button>{" "}
-          </Link>
-          <Link to="/login">
-            {" "}
-            <button>Login</button>{" "}
+            <button>Login/Sign Up</button>{" "}
           </Link>
         </>
       )}

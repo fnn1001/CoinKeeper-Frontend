@@ -1,0 +1,81 @@
+.LoginPage {
+    background-color: #151429;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+  }
+  
+  label {
+    margin-bottom: 8px;
+  }
+  
+  input {
+    padding: 10px;
+    margin-bottom: 16px;
+    border: none;
+    border-bottom: 2px solid #067d80;
+    background-color: #151429;
+    color: white;
+    outline: none;
+  }
+  
+  button {
+    border: none;
+    border-radius: 6px;
+    height: 44px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0 30px;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #067d80;
+    color: #151429;
+    cursor: pointer;
+    transition: background-color 200ms, color 200ms;
+  }
+  
+  button:hover {
+    background-color: #151429;
+    color: #067d80;
+  }
+  
+  .error-message {
+    color: #ff5555;
+    margin-top: 10px;
+  }
+  
+  p {
+    margin-top: 10px;
+  }
+  
+  Link {
+    color: white;
+    text-decoration: none;
+  }
+  
+  Link:hover {
+    color: #067d80;
+  }
+  
