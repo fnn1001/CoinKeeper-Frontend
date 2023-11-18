@@ -20,6 +20,11 @@ class AuthService {
   }
 
   login = (requestBody) => {
+
+    console.log("login server call")
+    console.log(requestBody)
+
+
     return this.api.post("/auth/login", requestBody);
     // same as
     // return axios.post("http://localhost:5005/auth/login");

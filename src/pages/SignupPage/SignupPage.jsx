@@ -1,18 +1,24 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+// Import necessary libraries
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import authService from "../../services/auth.service";
 import "./SignupPage.css"; // Import your CSS file
-
+import { AuthContext } from "../../context/auth.context";
 
 function SignupPage() {
+  // State variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [isLogin, setIsLogin] = useState(true);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
+  // Navigation
   const navigate = useNavigate();
 
+  const { authenticateUser } = useContext(AuthContext)
+
+  // Event handlers
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
@@ -24,20 +30,50 @@ function SignupPage() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+
+    // Check for missing fields
+    if (!email || !password || (!isLogin && !name)) {
+      setErrorMessage("Please fill in all fields.");
+      return;
+    }
+
+    // Check for valid email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+
+    // Check if password meets requirements
+    const passwordRequirementsMet =
+      password.length >= 8 && /\d/.test(password) && /[A-Z]/.test(password);
+
+    if (!passwordRequirementsMet) {
+      setErrorMessage("Password does not meet requirements.");
+      return;
+    }
+
+    // Create request body
     const requestBody = isLogin ? { email, password } : { email, password, name };
 
     try {
+      // Make API request based on login or signup
       const response = isLogin
         ? await authService.login(requestBody)
         : await authService.signup(requestBody);
 
+      console.log("response")
+      console.log(response.data)
+
+      // If successful, redirect to the home page
       const authToken = response.data.authToken;
-      // Assuming you have these functions in your AuthContext
-      // const { storeToken, authenticateUser } = useContext(AuthContext);
-      // storeToken(authToken);
-      // authenticateUser();
+      localStorage.setItem("authToken", authToken)
+
+      authenticateUser()
+
       navigate("/");
     } catch (error) {
+      // If there's an error, set the error message in the state
       const errorDescription = error.response?.data?.message || "An error occurred.";
       setErrorMessage(errorDescription);
     }
@@ -106,6 +142,14 @@ function SignupPage() {
                           />
                           <i className="input-icon uil uil-lock-alt"></i>
                         </div>
+                        <p className="password-requirements">
+                          Password Requirements:
+                          <ul>
+                            <li>At least 8 characters</li>
+                            <li>At least one number</li>
+                            <li>At least one capital letter</li>
+                          </ul>
+                        </p>
                         <button
                           type="submit"
                           className="btn mt-4"
