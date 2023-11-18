@@ -13,9 +13,15 @@ function Navbar() {
       <Link to="/">
         <button>Home</button>
       </Link>
+    
+    {/* to move after isLoggedIn once auth is working */}
+      <Link to="/usermainpage"> 
+          <button> My CoinKeeper </button>
+        </Link>
 
       {isLoggedIn && (
         <>
+        
           <button onClick={logOutUser}>Logout</button>
 
           <Link to="/profile">
@@ -37,6 +43,7 @@ function Navbar() {
             {" "}
             <button>Login</button>{" "}
           </Link>
+         
         </>
       )}
     </nav>
