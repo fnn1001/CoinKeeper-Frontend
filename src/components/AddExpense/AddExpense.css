@@ -1,0 +1,66 @@
+.add-expense-container {
+    display: flex;
+    margin: 30px auto;
+    justify-content: center;
+    width: 380px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .add-expense-container:hover{
+    box-shadow: 5px 5px 5px 5px #000000;  
+}
+
+  
+  .add-expense-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .add-expense-container form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  
+  .add-expense-container label {
+    margin: 10px 40px;
+  }
+  
+  .add-expense-container input {
+    padding: 1px;
+    font-size: 1rem;
+    margin-left: 20px;
+    width: 160px;
+  }
+  
+  .add-expense-container button {
+    background-color: #ccc;
+    width: 380px;
+    color: white;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+  
+  .add-expense-container button:hover {
+    background-color: #067d80; 
+    color: #ccc;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    transition: .3s ease-in-out;
+}
+ 
+.expense-input-wrapper{
+    display: flex;
+    justify-content: space-between;    align-items: center;
+    margin: 4px 50px 0px 0px;
+}
+
+#categoryID{
+    font-size: 16px;
+    width: 167px;
+}
