@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import authService from "../../services/auth.service";
 import "./SignupPage.css"; // Import your CSS file
-import PasswordRequirements from "../../components/PasswordRequirements/PasswordRequirements";
 
 
 function SignupPage() {
