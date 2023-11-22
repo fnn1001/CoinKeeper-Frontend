@@ -38,7 +38,7 @@ const AddCategory = () => {
                 required
                 />
                 </label>
-                <button type="submit"> Add Category </button>
+                <button className="add-btn" type="submit"> Add Category </button>
             </form>
         </div>
     )

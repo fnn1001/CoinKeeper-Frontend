@@ -102,7 +102,7 @@ const AddExpense = () => {
         </div>
 
         {/* Submit button */}
-        <button type="submit">Add Expense</button>
+        <button className="add-btn" type="submit">Add Expense</button>
       </form>
     </div>
   );

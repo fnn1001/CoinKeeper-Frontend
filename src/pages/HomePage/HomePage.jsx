@@ -9,7 +9,9 @@ import logo1 from "../../images/piechart-logo.png"
 import logo2 from "../../images/dollar-logo.png"
 import logo3 from "../../images/calculator-logo.png"
 
-
+// EXTERNAL DEPENDENCIES
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
 
@@ -21,7 +23,9 @@ const HomePage = () => {
                     <div class="hero-content">
                         <h1 className='hero-header'> One coin at a time. </h1>
                         <p className='hero-subheader'> At CoinKeeper, we believe everyone deserves financial freedom. Master the art of money management, effortlessly track your expenses, and watch your savings grow. CoinKeeper — where smart budgeting meets financial freedom, one coin at a time.  </p>
+                        <Link to="/signup">
                         <button id='landing-page-btn'> Get started for free</button>
+                        </Link>
                     </div>
             </div>
 
@@ -58,7 +62,9 @@ const HomePage = () => {
                 <div className='stats-call-to-action'> 
                     <p id="stats-conclusion"> Understanding and actively managing personal spending is crucial for maintaining financial well-being and preventing the onset of challenging debt situations. By cultivating awareness of expenditures, individuals can gain insights into their financial habits, identify areas for potential savings, and make informed decisions about budgetary allocations. This proactive approach empowers individuals to establish a sustainable and responsible financial framework, mitigating the risk of accumulating excessive debt. Furthermore, financial consciousness fosters a sense of control and allows for the creation of realistic savings and debt repayment plans. Ultimately, being mindful of one's spending habits contributes to long-term financial stability, enabling individuals to navigate economic uncertainties with greater confidence and resilience.</p>                
                     <h2> Start owning your budget now. Use CoinKeeper. </h2>
+                    <Link to="/signup">
                     <button id='start-now-btn'> Start now </button>
+                    </Link>
                 </div>
             </div>
 

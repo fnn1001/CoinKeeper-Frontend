@@ -62,7 +62,7 @@ const AddIncome = () => {
         </div>
 
         {/* Submit button */}
-        <button type="submit">Add Income</button>
+        <button className="add-btn" type="submit">Add Income</button>
       </form>
     </div>
   );
