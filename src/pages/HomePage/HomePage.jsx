@@ -30,17 +30,17 @@ const HomePage = () => {
                 <h3 className='sidekick-header'> Personal finance made easy </h3>
                 <div className='sidekick-subitems'> 
                     <div className='single-item'> 
-                        <img src={logo1} className="logo"/>
+                        <img src={logo1} className="homepage-logo"/>
                         <h3> Track your expenses </h3>
                         <p> Add your recurring bills, your shopping sprees and more. </p>
                     </div>
                     <div className='single-item'> 
-                        <img src={logo2} className="logo"/>
+                        <img src={logo2} className="homepage-logo"/>
                         <h3> Analyze your cash flow </h3>
                         <p> Discover your money weaknesses and bet on your financial strenghts. </p>
                     </div>
                     <div className='single-item'> 
-                        <img src={logo3} className="logo"/>
+                        <img src={logo3} className="homepage-logo"/>
                         <h3> Prepare your investments </h3>
                         <p> Watch your favourite stocks, save for specific goals.</p>
                     </div>
