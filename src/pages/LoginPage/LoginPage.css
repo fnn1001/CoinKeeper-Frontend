@@ -1,3 +1,4 @@
+
 .LoginPage {
     background-color: #151429;
     color: white;
@@ -51,14 +52,14 @@
     align-items: center;
     justify-content: center;
     background-color: #067d80;
-    color: #151429;
+    color: white;
     cursor: pointer;
     transition: background-color 200ms, color 200ms;
   }
   
   button:hover {
     background-color: #151429;
-    color: #067d80;
+    color: white;
   }
   
   .error-message {
@@ -79,3 +80,4 @@
     color: #067d80;
   }
   
+ 

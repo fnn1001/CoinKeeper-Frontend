@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 const HomePage = () => {
 
     return (
-        <div>
+        <div className="page">
             <div className='hero-section'>
 
                 <div class="hero-background"> </div>

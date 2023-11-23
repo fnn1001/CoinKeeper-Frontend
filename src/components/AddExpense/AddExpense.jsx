@@ -73,18 +73,6 @@ const AddExpense = () => {
             <option value="pets">Pets</option>
             <option value="education">Education</option>
             <option value="savings">Savings & Investments</option>
-
-
-
-
-
-
-
-
-
-
-
-            {/* Add more options as needed */}
           </select>
         </div>
 

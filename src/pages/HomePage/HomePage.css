@@ -1,3 +1,7 @@
+.page{
+    background-color: #151429;
+    color: white;
+}
 .hero-section {
     position: relative;
     height: 600px;

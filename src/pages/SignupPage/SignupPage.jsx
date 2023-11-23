@@ -80,7 +80,7 @@ function SignupPage() {
   };
 
   return (
-    <div className="section">
+    <div className="section" style={{color: "white"}}>
       <div className="container">
         <div className="row full-height justify-content-center">
           <div className="col-12 text-center align-self-center py-5">
@@ -217,6 +217,7 @@ function SignupPage() {
                           type="submit"
                           className="btn mt-4"
                           onClick={handleFormSubmit}
+                          style={{color: "white"}}
                         >
                           Sign up
                         </button>
