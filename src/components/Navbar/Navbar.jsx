@@ -9,14 +9,14 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav>
+    <nav className="navbar-horizontal">
       <Link to="/">
         <button>Home</button>
       </Link>
     
     {/* to move after isLoggedIn once auth is working */}
-      <Link to="/usermainpage"> 
-          <button> My CoinKeeper </button>
+      <Link to="/budgets"> 
+          <button> Budgets </button>
         </Link>
 
       {isLoggedIn && (

@@ -40,7 +40,7 @@ const Sidebar = ({ isLoggedIn, logOutUser, user }) => {
       </div>
 
       <div id="main" style={{ marginLeft: sidebarVisible ? '250px' : '0' }}>
-        <div className="navbar">
+        <div className="sidebar-navbar">
           <button className={`menu-btn ${sidebarVisible ? 'open' : ''}`} onClick={toggleSidebar}>
             <span></span>
             <span></span>

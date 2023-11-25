@@ -1,5 +1,5 @@
 // STYLES
-import "../UserMainPage/UserMainPage.css";
+import "./BudgetsPage.css";
 import { Stack, Container, Button } from "react-bootstrap";
 import { useState } from "react";
 

@@ -36,13 +36,13 @@ body {
   
   #main {
     transition: margin-left 0.5s;
-    padding: 16px;
+    /* padding: 16px; */
   }
   
-  .navbar {
+  .sidebar-navbar {
     background-color: #111;
-    padding: 15px;
-  }
+    padding: 20px;
+  } 
   
   .menu-btn {
     font-size: 20px;

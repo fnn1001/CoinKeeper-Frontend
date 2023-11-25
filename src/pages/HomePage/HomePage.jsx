@@ -31,22 +31,22 @@ const HomePage = () => {
 
             <div className='sidekick-section'>
 
-                <h3 className='sidekick-header'> Personal finance made easy </h3>
+                <h1 className='sidekick-header'> Personal finance made easy </h1>
                 <div className='sidekick-subitems'> 
                     <div className='single-item'> 
                         <img src={logo1} className="homepage-logo"/>
                         <h3> Track your expenses </h3>
-                        <p> Add your recurring bills, your shopping sprees and more. </p>
+                        <p className="features"> Add your recurring bills, your shopping sprees and more. </p>
                     </div>
                     <div className='single-item'> 
                         <img src={logo2} className="homepage-logo"/>
                         <h3> Analyze your cash flow </h3>
-                        <p> Discover your money weaknesses and bet on your financial strenghts. </p>
+                        <p className="features"> Discover your money weaknesses and bet on your financial strenghts. </p>
                     </div>
                     <div className='single-item'> 
                         <img src={logo3} className="homepage-logo"/>
                         <h3> Prepare your investments </h3>
-                        <p> Watch your favourite stocks, save for specific goals.</p>
+                        <p className="features">  Watch your favourite stocks, save for specific goals.</p>
                     </div>
                 </div>
             </div>
@@ -54,13 +54,10 @@ const HomePage = () => {
             <div className='stats'>
                 <ul> 
                     <li> 30% of Americans said they’re either struggling or in crisis with their personal finances.* </li>
-                    <li> The average debt in America is $59,580 across mortgages, auto loans, student loans, and credit cards.* </li>
                     <li> The average debt per person keeps on increasing steadily over the years: in the fourth quarter of 2018, the average total debt per person was $50,090 compared to $55,480 in 2021 and $59,580 in 2022.*</li>
-                    <li> Debt tends to peak somewhere around middle age. As a whole, this suggests that Americans tend to pay off debt going into retirement and tend to keep debt balances low in retirement, especially people over age 70. For those under age 30, the largest source of debt is mortgages.*</li>
                 </ul>
 
                 <div className='stats-call-to-action'> 
-                    <p id="stats-conclusion"> Understanding and actively managing personal spending is crucial for maintaining financial well-being and preventing the onset of challenging debt situations. By cultivating awareness of expenditures, individuals can gain insights into their financial habits, identify areas for potential savings, and make informed decisions about budgetary allocations. This proactive approach empowers individuals to establish a sustainable and responsible financial framework, mitigating the risk of accumulating excessive debt. Furthermore, financial consciousness fosters a sense of control and allows for the creation of realistic savings and debt repayment plans. Ultimately, being mindful of one's spending habits contributes to long-term financial stability, enabling individuals to navigate economic uncertainties with greater confidence and resilience.</p>                
                     <h2> Start owning your budget now. Use CoinKeeper. </h2>
                     <Link to="/signup">
                     <button id='start-now-btn'> Start now </button>

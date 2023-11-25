@@ -33,19 +33,19 @@
 }
 
 .hero-header{
-font-size: 50px;
+font-size: 80px;
 }
 
 .hero-subheader{
     text-align: center;
     margin: 20px 200px;
-    font-size: 24px;
+    font-size: 30px;
     padding-bottom: 20px;
 }
 
 #landing-page-btn{
-    padding: 20px;
-    font-size: 20px;
+    padding: 30px;
+    font-size: 30px;
 }
 
 .sidekick-section{
@@ -63,8 +63,8 @@ font-size: 50px;
 }
 
 .sidekick-header{
-    margin-top: 50px;
-    font-size: 30px;
+    margin: 100px 0px;
+    font-size: 40px;
 }
 
 .single-item{
@@ -74,6 +74,11 @@ font-size: 50px;
     justify-content: center;
     margin: 10px 80px;
     text-align: center;
+    width: 300px;
+}
+
+.features{
+    font-size: 20px;
 }
 
 .image-container {
@@ -88,8 +93,11 @@ font-size: 50px;
   }
   
 .stats{
-    margin: 60px;
-    font-size: 18px;
+    margin: 44px;
+    font-size: 28px;
+    line-height: 50px;
+    padding: 10px 60px;
+    text-align: justify;
 }
 
 #stats-conclusion{
@@ -117,4 +125,9 @@ font-size: 50px;
    text-align: center;
     font-size: 16px;
     margin: 60px;
+}
+
+footer{
+    display: flex;
+    justify-content: flex-end;
 }
