@@ -7,14 +7,12 @@ body{
 	font-size: 15px;
 	line-height: 1.7;
 	color: #c4c3ca;
-	  background-color: #151429;
+	background-color: #151429;
 ;
 	overflow-x: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-
-
 }
 a {
 	cursor: pointer;
@@ -278,9 +276,6 @@ h6 span{
   color: #067d80;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
-
-
-
 
 .logo {
 	position: absolute;
