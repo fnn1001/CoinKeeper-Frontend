@@ -6,6 +6,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import UserMainPage from './pages/UserMainPage/UserMainPage';
+import InvestPage from "./pages/Investment/Invest";
 
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
@@ -45,6 +46,12 @@ function App() {
               <IsAnon>
                 <LoginPage />
               </IsAnon>
+            }
+          />
+          <Route
+            path="/invest"
+            element={
+                <InvestPage />
             }
           />
         </Routes>
