@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Invest from '../../pages/Investment/Invest';
 import './Sidebar.css';
 
 const Sidebar = ({ isLoggedIn, logOutUser, user }) => {
@@ -31,6 +32,9 @@ const Sidebar = ({ isLoggedIn, logOutUser, user }) => {
             <span>{user && user.name}</span>
           </>
         )}
+            <Link to="/invest" className="sidebar-link" onClick={toggleSidebar}>
+              My Investments
+            </Link>
 
         {!isLoggedIn && (
           <Link to="/signup" className="sidebar-link" onClick={toggleSidebar}>
