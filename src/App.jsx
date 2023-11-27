@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import UserMainPage from './pages/UserMainPage/UserMainPage';
+import BudgetsPage from "./pages/BudgetsPage/BudgetsPage";
 import InvestPage from "./pages/Investment/Invest";
 
 import IsPrivate from "./components/IsPrivate/IsPrivate";
@@ -21,7 +21,7 @@ function App() {
       <div className="main-content">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/usermainpage" element={<UserMainPage />} />
+          <Route path="/budgets" element={<BudgetsPage />} />
 
           <Route
             path="/profile"

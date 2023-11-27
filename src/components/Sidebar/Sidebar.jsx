@@ -16,8 +16,8 @@ const Sidebar = ({ isLoggedIn, logOutUser, user }) => {
         <Link to="/" className="sidebar-link" onClick={toggleSidebar}>
           Home
         </Link>
-        <Link to="/usermainpage" className="sidebar-link" onClick={toggleSidebar}>
-          My CoinKeeper
+        <Link to="/budgets" className="sidebar-link" onClick={toggleSidebar}>
+          My budgets
         </Link>
 
         {/* Add more navigation links as needed */}

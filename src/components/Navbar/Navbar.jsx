@@ -15,7 +15,7 @@ function Navbar() {
       </Link>
     
     {/* to move after isLoggedIn once auth is working */}
-      <Link to="/usermainpage"> 
+      <Link to="/budgets"> 
           <button> Budgets </button>
         </Link>
 
