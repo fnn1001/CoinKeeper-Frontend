@@ -15,7 +15,7 @@ import {
   useBudgets,
 } from "../../context/BudgetsContext";
 
-const UserMainPage = () => {
+const BudgetsPage = () => {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false);
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
   const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState();
@@ -78,4 +78,4 @@ const UserMainPage = () => {
   );
 };
 
-export default UserMainPage;
+export default BudgetsPage;
