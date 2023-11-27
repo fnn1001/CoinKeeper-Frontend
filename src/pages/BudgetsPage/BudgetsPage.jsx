@@ -1,6 +1,6 @@
 // STYLES
 import "./BudgetsPage.css";
-import { Stack, Container, Button } from "react-bootstrap";
+import { Stack, Container, Button, Form } from "react-bootstrap";
 import { useState } from "react";
 
 // COMPONENTS
@@ -19,6 +19,7 @@ const BudgetsPage = () => {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false);
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
   const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState();
+  const [searchTerm, setSearchTerm] = useState("");
   const { budgets, getBudgetExpenses } = useBudgets();
 
   const openAddExpenseModal = (budgetId) => {
@@ -26,18 +27,31 @@ const BudgetsPage = () => {
     setAddExpenseModalBudgetId(budgetId);
   };
 
+   // Filter budgets based on search query
+   const filteredBudgets = budgets.filter((budget) =>
+   budget.name.toLowerCase().includes(searchTerm.toLowerCase())
+ );
+
+
   return (
     <div>
       <Container className="my-4">
-        <Stack direction="horizontal" gap="2" className="mb-4">
-          <h1 className="me-auto"> Budgets </h1>
-          <Button variant="primary" onClick={() => setShowAddBudgetModal(true)}>
+        <Stack direction="horizontal" gap="2" className="budgets-wrapper">
+          <p className="budget-title"> Budgets </p>
+          <Button variant="primary" className="add-button" onClick={() => setShowAddBudgetModal(true)}>
             Add Budget
           </Button>
-          <Button variant="outline-primary" onClick={openAddExpenseModal}>
+          <Button variant="outline-primary" className="add-button" onClick={openAddExpenseModal}>
             Add Expense
           </Button>
-        </Stack>
+          </Stack>
+          <div className="search-category">
+          <Form.Control
+            type="text"
+            placeholder="Search budget"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
         <div
           style={{
             display: "grid",
@@ -46,7 +60,7 @@ const BudgetsPage = () => {
             alignItems: "flex-start",
           }}
         >
-          {budgets.map((budget) => {
+           {filteredBudgets.map((budget) => {
             const amount = getBudgetExpenses(budget.id).reduce(
               (total, expense) => total + expense.amount,
               0

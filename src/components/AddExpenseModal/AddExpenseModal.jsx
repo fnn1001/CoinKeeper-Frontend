@@ -59,7 +59,7 @@ const AddExpenseModal = (props) => {
             </Form.Group>
 
             <div className="d-flex justify-content-end">
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" className="add-btn">
                 Add
               </Button>
             </div>

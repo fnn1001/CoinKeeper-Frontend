@@ -2,12 +2,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 380px;
     padding: 12px;
 }
 
+.card-body{
+    width: 600px;
+}
+
 .card-body:hover{
-    box-shadow: 5px 5px 5px 5px #ccc;  
+    border: 2px solid white;
+    border-radius: 8px;
 }
 
 .card-name{
@@ -38,8 +42,13 @@
 }
 
 .add-btn:hover {
-    background-color: #067d80; 
-    color: #ccc;
+    background-color:#151429; 
+    color: #067d80;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
     transition: .3s ease-in-out;
+}
+
+.warning-message{
+    padding-left: 4px;
+    font-size: 14px;
 }
