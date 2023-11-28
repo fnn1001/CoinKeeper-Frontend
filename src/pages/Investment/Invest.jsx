@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "../Investment/Invest.css"
 
 const Invest = () => {
   const [currency, setCurrency] = useState('bitcoin');
@@ -103,8 +104,7 @@ const Invest = () => {
 
   return (
     <div className="container mt-5">
-      <h1 className="mb-4" style={{ color: '#151429' }}>Investment Profit/Loss Calculator</h1>
-      <div className="card" style={{ backgroundColor: '#067d80', color: '#151429' }}>
+      <div className="card">
         <div className="card-body">
           {error && (
             <div className="alert alert-danger" role="alert">
@@ -145,7 +145,7 @@ const Invest = () => {
               onChange={(e) => setPurchaseAmount(e.target.value)}
             />
           </div>
-          <button className="btn btn-primary" onClick={fetchData} style={{ backgroundColor: '#067d80' }}>
+          <button id="calculate-button" onClick={fetchData}>
             Calculate Profit/Loss
           </button>
 

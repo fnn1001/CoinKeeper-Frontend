@@ -17,7 +17,7 @@ const Sidebar = ({ isLoggedIn, logOutUser, user }) => {
           Home
         </Link>
         <Link to="/budgets" className="sidebar-link" onClick={toggleSidebar}>
-          My budgets
+          My Budgets
         </Link>
 
         {/* Add more navigation links as needed */}

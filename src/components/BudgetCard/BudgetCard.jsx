@@ -35,11 +35,11 @@ const BudgetCard = (props) => {
         </div>
       )}
 
-      {amount === max / 2 && (
-        <div className="warning-message">
-          Slow down, you're halfway through your budget. 
-        </div>
-      )}
+{amount >= max / 2 && amount <= max && (
+  <div className="warning-message">
+    Slow down, you're halfway through your budget. 
+  </div>
+)}
       <Card.Body>
         <Card.Title className="card-title">
           <div className="card-name"> {name} </div>
@@ -62,7 +62,7 @@ const BudgetCard = (props) => {
           />
         )}
         {!hideButtons && (
-          <Stack direction="horizontal" gap="2" className="mt-4">
+          <Stack direction="horizontal" gap="2" className="mt-4 d-flex justify-content-center gap-2">
             <Button
               variant="outline-primary"
               className="add-btn"

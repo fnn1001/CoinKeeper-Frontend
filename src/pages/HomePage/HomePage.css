@@ -25,27 +25,24 @@
     z-index: 1;
     text-align: center;
     color: white;
-}
-
-.hero-content {
-    z-index: 1;
-    text-align: center;
+    margin: 0px 60px;
 }
 
 .hero-header{
-font-size: 80px;
+font-size: 50px;
+padding-bottom: 30px;
 }
 
 .hero-subheader{
     text-align: center;
     margin: 20px 200px;
-    font-size: 30px;
+    font-size: 20px;
     padding-bottom: 20px;
 }
 
 #landing-page-btn{
     padding: 30px;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .sidekick-section{
@@ -58,12 +55,10 @@ font-size: 80px;
 .sidekick-subitems{
     display: flex;
     flex-direction: row;
-    margin: 10px;
-    padding: 10px;
 }
 
 .sidekick-header{
-    margin: 100px 0px;
+    margin: 60px;
     font-size: 40px;
 }
 
@@ -93,8 +88,8 @@ font-size: 80px;
   }
   
 .stats{
-    margin: 44px;
-    font-size: 28px;
+    margin: 20px;
+    font-size: 20px;
     line-height: 50px;
     padding: 10px 60px;
     text-align: justify;
@@ -102,19 +97,20 @@ font-size: 80px;
 
 #stats-conclusion{
     font-size: 22px;
-    margin: 60px 10px;
+    margin: 60px;
     text-align: center;
 }
 
 .stats-call-to-action{
     text-align: center;
-    margin-top: 80px;
+    margin-top: 60px;
 }
 
 #start-now-btn{
-    font-size: 24px;
-    padding: 12px;
-    margin-top: 40px;
+    padding: 30px;
+    font-size: 20px;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 .homepage-logo{

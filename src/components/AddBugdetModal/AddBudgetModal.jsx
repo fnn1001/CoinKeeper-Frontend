@@ -44,7 +44,7 @@ const AddBudgetModal = (props) => {
             </Form.Group>
 
             <div className="d-flex justify-content-end">
-              <Button variant="primary" type="submit" className="add-btn">
+              <Button type="submit" className="add-button">
                 Add
               </Button>
             </div>

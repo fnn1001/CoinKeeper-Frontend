@@ -1,10 +1,8 @@
-/* Invest.css */
 
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    
   }
   
   .container {
@@ -41,20 +39,31 @@ body {
     border-radius: 4px;
   }
   
-  button {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    background-color: #007bff;
-    color: #fff;
+  #calculate-button {
+    font-size: 14px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
+    height: 44px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0 30px;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #067d80;
+    color: white;
     cursor: pointer;
+    transition: background-color 200ms, color 200ms;
   }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+
+  #calculate-button:hover{
+    background-color:#151429; 
+    color: #067d80;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    transition: .3s ease-in-out;
+}
+
   .result {
     margin-top: 2rem;
   }
@@ -68,7 +77,7 @@ body {
     font-size: 1rem;
   }
   
-  @media (min-width: 768px) {
+ /* @media (min-width: 768px) {
     .container {
       flex-direction: row;
     }
@@ -76,5 +85,10 @@ body {
     .col {
       width: 50%;
     }
-  }
+  } */
   
+
+  #investment-card{
+    background-color: white;
+    border-radius: 8px;
+  }
