@@ -4,6 +4,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Sidebar.css';
 import { AuthContext } from '../../context/auth.context';
 
+// Function to capitalize the first letter of a string
+const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
 // Sidebar component
 const Sidebar = (props) => {
   // State for managing sidebar visibility
@@ -22,7 +27,7 @@ const Sidebar = (props) => {
   // Function to handle link click based on authentication status
   const handleLinkClick = (path) => {
     toggleSidebar();
-    
+
     // Redirect to signup if not logged in (except for the Login/Sign Up link)
     if (!isLoggedIn && path !== '/signup') {
       navigate('/signup');
@@ -33,12 +38,21 @@ const Sidebar = (props) => {
     <>
       {/* Sidebar container */}
       <div className={`sidebar ${sidebarVisible ? 'open' : ''}`}>
+        {/* User Greeting */}
+        {isLoggedIn && (
+          <div className="user-info">
+            <span className="user-greeting">
+              {user && `Hello, ${capitalizeFirstLetter(user.name)}`}
+            </span>
+          </div>
+        )}
+
         {/* Navigation links */}
         <Link to="/" className="sidebar-link" onClick={() => handleLinkClick('/')}>
           Home
         </Link>
         <Link to="/budgets" className="sidebar-link" onClick={() => handleLinkClick('/budgets')}>
-          My budgets
+          My Budgets
         </Link>
 
         {/* Additional links for logged-in users */}
@@ -47,12 +61,6 @@ const Sidebar = (props) => {
             <Link to="/profile" className="sidebar-link" onClick={() => handleLinkClick('/profile')}>
               Profile
             </Link>
-            <div className="user-info">
-              <span>{user && user.name}</span>
-              <button onClick={logOutUser} className="logout-btn">
-                Logout
-              </button>
-            </div>
           </>
         )}
 
@@ -67,9 +75,9 @@ const Sidebar = (props) => {
             <span onClick={() => handleLinkClick('/signup')}>Login/Sign Up</span>
           </Link>
         ) : (
-          <button onClick={logOutUser} className="sidebar-link">
-            Logout
-          </button>
+          <Link to="/" className="sidebar-link">
+            <span onClick={logOutUser}>Logout</span>
+          </Link>
         )}
       </div>
 
