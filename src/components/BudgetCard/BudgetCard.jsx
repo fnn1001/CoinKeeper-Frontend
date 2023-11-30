@@ -12,17 +12,12 @@ const BudgetCard = (props) => {
     name,
     amount,
     max,
-    gray,
     hideButtons,
     onAddExpenseClick,
     onViewExpensesClick,
   } = props;
+
   const classNames = [];
-  /* if (amount > max) {
-    classNames.push("bg-danger", "text-white", "bg-opacity-10");
-  } else if (gray) {
-    classNames.push("bg-light");
-  }*/
 
   return (
     <Card className={classNames.join(" ")}>
@@ -61,7 +56,7 @@ const BudgetCard = (props) => {
             now={amount}
           />
         )}
-        {!hideButtons && (
+       {!hideButtons && (
           <Stack direction="horizontal" gap="2" className="mt-4 d-flex justify-content-center gap-2">
             <Button
               variant="outline-primary"
@@ -78,7 +73,7 @@ const BudgetCard = (props) => {
               View Expenses
             </Button>
           </Stack>
-        )}
+       )}
       </Card.Body>
     </Card>
   );

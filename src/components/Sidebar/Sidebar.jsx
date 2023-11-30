@@ -54,6 +54,7 @@ const Sidebar = (props) => {
         <Link to="/budgets" className="sidebar-link" onClick={toggleSidebar}>
           My Budgets
         </Link>
+       
 
         {/* Additional links for logged-in users */}
         {isLoggedIn && (

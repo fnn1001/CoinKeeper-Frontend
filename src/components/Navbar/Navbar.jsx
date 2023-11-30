@@ -19,6 +19,7 @@ function Navbar() {
           <button> Budgets </button>
         </Link>
 
+
       {isLoggedIn && (
         <>
         
