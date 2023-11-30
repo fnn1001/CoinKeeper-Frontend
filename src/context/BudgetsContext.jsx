@@ -1,3 +1,4 @@
+// DEPENDENCIES
 import React, { useContext, useState } from "react";
 import { v4 as uuidV4 } from "uuid";
 import useLocalStorage from "../hooks/useLocalStorage";
@@ -37,7 +38,9 @@ export const BudgetsProvider = ({ children }) => {
     setExpenses((prevExpenses) => {
       return prevExpenses.map((expense) => {
         if (expense.budgetId !== id) return expense;
-        return { ...expense, budgetId: UNCATEGORIZED_BUDGET_ID };
+
+        const updatedExpense = { ...expense, budgetId: id || UNCATEGORIZED_BUDGET_ID };
+        return updatedExpense;
       });
     });
 

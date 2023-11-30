@@ -1,6 +1,8 @@
+// DEPENDENCIES
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Invest from '../../pages/Investment/Invest';
+
+//STYLES
 import './Sidebar.css';
 
 const Sidebar = ({ isLoggedIn, logOutUser, user }) => {

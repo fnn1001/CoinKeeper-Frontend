@@ -1,3 +1,4 @@
+// STYLES
 import "./ProfilePage.css";
 
 function ProfilePage() {

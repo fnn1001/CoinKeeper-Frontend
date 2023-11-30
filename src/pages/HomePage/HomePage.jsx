@@ -9,7 +9,7 @@ import logo1 from "../../images/piechart-logo.png"
 import logo2 from "../../images/dollar-logo.png"
 import logo3 from "../../images/calculator-logo.png"
 
-// EXTERNAL DEPENDENCIES
+// DEPENDENCIES
 import React from 'react';
 import { Link } from 'react-router-dom';
 

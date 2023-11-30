@@ -1,7 +1,5 @@
-// INTERNAL DEPENDENCIES
+// DEPENDENCIES
 import { currencyFormatter } from "../../utils";
-
-// EXTERNAL DEPENDENCIES
 import { Button, Card, ProgressBar, Stack } from "react-bootstrap";
 
 // STYLES

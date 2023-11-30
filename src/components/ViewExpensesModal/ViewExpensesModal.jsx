@@ -1,9 +1,15 @@
+// COMPONENTS
 import { Modal, Button, Stack } from "react-bootstrap";
 import {
   UNCATEGORIZED_BUDGET_ID,
   useBudgets,
 } from "../../context/BudgetsContext";
+
+// DEPENDENCIES
 import { currencyFormatter } from "../../utils";
+
+// STYLES
+import "./ViewExpensesModal.css"
 
 const ViewExpensesModal = (props) => {
   const { budgetId, handleClose } = props;

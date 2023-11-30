@@ -1,9 +1,14 @@
-// Import necessary libraries
+// DEPENDENCIES
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../../services/auth.service";
-import "./SignupPage.css"; // Import your CSS file
+
+// CONTEXT
 import { AuthContext } from "../../context/auth.context";
+
+// STYLES
+import "./SignupPage.css";
+
 
 function SignupPage() {
   // State variables
@@ -25,7 +30,7 @@ function SignupPage() {
 
   const handleFormToggle = () => {
     setIsLogin(!isLogin);
-    setErrorMessage(undefined); // Clear any error message when toggling forms
+    setErrorMessage(undefined);
   };
 
   const handleFormSubmit = async (e) => {
