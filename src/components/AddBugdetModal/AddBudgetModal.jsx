@@ -1,7 +1,6 @@
 import { Form, Modal, Button } from "react-bootstrap";
 import { useRef } from "react";
 import { useBudgets } from "../../context/BudgetsContext";
-import "./AddBudgetModal.css";
 
 const AddBudgetModal = (props) => {
   const { show, handleClose } = props;
