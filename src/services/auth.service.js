@@ -37,7 +37,11 @@ class AuthService {
   };
 
   verify = () => {
-    return this.api.get("/auth/verify");
+    return this.api.get("/auth/verify", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      },
+    });
     // same as
     // return axios.post("http://localhost:5005/auth/verify");
   };
