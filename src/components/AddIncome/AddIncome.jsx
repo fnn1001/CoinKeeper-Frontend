@@ -1,4 +1,4 @@
-// EXTERNAL DEPENDENCIES
+// DEPENDENCIES
 import React, { useState } from "react";
 
 // STYLES

@@ -1,3 +1,4 @@
+// STYLES
 import "./NotFoundPage.css";
 
 function NotFoundPage() {

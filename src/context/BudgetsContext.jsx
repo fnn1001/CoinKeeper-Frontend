@@ -1,3 +1,4 @@
+// DEPENDENCIES
 import React, { useContext, useState } from "react";
 import { v4 as uuidV4 } from "uuid";
 import useLocalStorage from "../hooks/useLocalStorage";
@@ -33,16 +34,21 @@ export const BudgetsProvider = ({ children }) => {
     });
   }
 
-  function deleteBudget({ id }) {
+   const deleteBudget = ({ id: budgetIdToDelete }) => {
     setExpenses((prevExpenses) => {
       return prevExpenses.map((expense) => {
-        if (expense.budgetId !== id) return expense;
-        return { ...expense, budgetId: UNCATEGORIZED_BUDGET_ID };
+        if (expense.budgetId !== budgetIdToDelete) return expense;
+
+        const updatedExpense = { ...expense, budgetId: UNCATEGORIZED_BUDGET_ID };
+        return updatedExpense;
       });
-    });
+    }); 
 
     setBudgets((prevBudgets) => {
-      return prevBudgets.filter((budget) => budget.id !== id);
+      if (budgetIdToDelete !== undefined) {
+        return prevBudgets.filter((budget) => budget.id !== budgetIdToDelete);
+      }
+      return prevBudgets;
     });
   }
 

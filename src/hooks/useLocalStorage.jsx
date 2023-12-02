@@ -1,3 +1,4 @@
+// DEPENDENCIES
 import { useState, useEffect } from "react";
 
 const useLocalStorage = (key, defaultValue) => {

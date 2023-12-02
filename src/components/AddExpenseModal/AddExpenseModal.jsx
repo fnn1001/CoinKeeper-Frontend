@@ -1,5 +1,8 @@
+// DEPENDENCIES
 import { Form, Modal, Button } from "react-bootstrap";
 import { useRef } from "react";
+
+// CONTEXT
 import {
   useBudgets,
   UNCATEGORIZED_BUDGET_ID,

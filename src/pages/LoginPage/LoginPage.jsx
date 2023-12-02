@@ -1,8 +1,14 @@
-import "./LoginPage.css";
+// DEPENDENCIES
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
+// CONTEXT
 import { AuthContext } from "../../context/auth.context";
 import authService from "../../services/auth.service";
+
+// STYLES
+import "./LoginPage.css";
+
 
 function LoginPage() {
   const [email, setEmail] = useState("");

@@ -1,6 +1,8 @@
-// PasswordRequirements.js
+// DEPENDENCIES 
 import React from "react";
-import "./PasswordRequirements.css"; // Import your CSS file
+
+// STYLES
+import "./PasswordRequirements.css"; 
 
 const PasswordRequirements = ({ fulfilledRequirements }) => {
   const requirements = [

@@ -1,9 +1,15 @@
+// COMPONENTS
 import { Modal, Button, Stack } from "react-bootstrap";
 import {
   UNCATEGORIZED_BUDGET_ID,
   useBudgets,
 } from "../../context/BudgetsContext";
+
+// DEPENDENCIES
 import { currencyFormatter } from "../../utils";
+
+// STYLES
+import "./ViewExpensesModal.css"
 
 const ViewExpensesModal = (props) => {
   const { budgetId, handleClose } = props;
@@ -18,9 +24,13 @@ const ViewExpensesModal = (props) => {
       ? { name: "Uncategorized", id: UNCATEGORIZED_BUDGET_ID }
       : budgets.find(budget => budget.id === budgetId);
 
+  console.log("test", budgetId, budgetId !== null)
+
+  const showModal = !!budgetId
+
   return (
-      <Modal show={budgetId != null} onHide={handleClose}>
-        <Modal.Header closeButton>
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton={true}>
           <Modal.Title>
             <Stack direction="horizontal" gap="2">
               <div> Expenses - {budget?.name}</div>
@@ -28,7 +38,7 @@ const ViewExpensesModal = (props) => {
                 <Button
                   onClick={() => {
                     console.log("Deleting budget: ", budget)
-                    deleteBudget(budget);
+                    deleteBudget({id: budget.id});
                     console.log("Budget deleted")
                     handleClose();
                   }}

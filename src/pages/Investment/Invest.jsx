@@ -1,5 +1,8 @@
+// DEPENDENCIES
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+
+// STYLES
 import "../Investment/Invest.css"
 
 const Invest = () => {
