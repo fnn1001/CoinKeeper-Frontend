@@ -36,6 +36,7 @@ function AuthProviderWrapper(props) {
           // Update state variables
           setIsLoggedIn(true);
           setIsLoading(false);
+          console.log("FROM AUTH CONTEXT: ", user);
           setUser(user);
         })
         .catch((error) => {

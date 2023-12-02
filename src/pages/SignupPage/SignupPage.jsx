@@ -74,6 +74,23 @@ function SignupPage() {
       const authToken = response.data.authToken;
       localStorage.setItem("authToken", authToken)
 
+      if (isLogin) {
+        const { data: userInfo } = await authService.verify()
+        const { data: userId }= await authService.verify()
+
+        localStorage.setItem("userInfo", JSON.stringify(userInfo))
+        localStorage.setItem("userID", JSON.stringify(userId))
+
+        console.log("userInfo", userInfo)
+        console.log("userID", userInfo._id)
+
+
+
+        // anywhere else:
+        // const userInfo = JSON.parse(localSotrage.getItem("userInfo"))
+        // const { _id } = userInfo
+      }
+
       authenticateUser()
 
       navigate("/");
@@ -85,7 +102,7 @@ function SignupPage() {
   };
 
   return (
-    <div className="section" style={{color: "white"}}>
+    <div className="section" style={{ color: "white" }}>
       <div className="container">
         <div className="row full-height justify-content-center">
           <div className="col-12 text-center align-self-center py-5">
@@ -222,7 +239,7 @@ function SignupPage() {
                           type="submit"
                           className="btn mt-4"
                           onClick={handleFormSubmit}
-                          style={{color: "white"}}
+                          style={{ color: "white" }}
                         >
                           Sign up
                         </button>
