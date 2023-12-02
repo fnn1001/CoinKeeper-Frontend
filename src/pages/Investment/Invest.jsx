@@ -5,7 +5,7 @@ import './Invest.css'; // Ensure this path is correct for your CSS file
 const Invest = () => {
   const [userID, setUserID] = useState('');
   const [userInvestments, setUserInvestments] = useState([]);
-  const [currency, setCurrency] = useState('Bitcoin');
+  const [currency, setCurrency] = useState('bitcoin');
   const [purchaseDate, setPurchaseDate] = useState('2022-02-22');
   const [purchaseAmount, setPurchaseAmount] = useState('1');
   const [profitLossPercentage, setProfitLossPercentage] = useState(null);
@@ -41,7 +41,7 @@ const Invest = () => {
     try {
       const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/invest/user/${userID}`);
       const investmentsWithCurrentPrice = await Promise.all(response.data.map(async (investment) => {
-        const currentDateResponse = await axios.get(`https://api.coingecko.com/api/v3/coins/${currency}`);
+        const currentDateResponse = await axios.get(`https://api.coingecko.com/api/v3/coins/${investment.Coin}`);
         console.log("Price now:", currentDateResponse.data.market_data.current_price.usd);
         return {
           ...investment,
