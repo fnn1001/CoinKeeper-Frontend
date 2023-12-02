@@ -227,38 +227,39 @@ const Invest = () => {
         <h2>Your Investments</h2>
         {userInvestments.length > 0 ? (
           <table className="table">
-          <thead>
-            <tr>
-              <th>Purchase Date</th>
-              <th>Currency</th>
-              <th>Amount</th>
-              <th>Purchase Price</th>
-              <th>Current Price</th>
-              <th>Profit/Loss %</th>
-              <th>Balance</th>
-            </tr>
-          </thead>
-          <tbody>
-            {userInvestments.map((investment, index) => (
-              <tr key={index}>
-                <td>{formatedDate(investment.date)}</td>
-                <td>{investment.Coin.charAt(0).toUpperCase() + investment.Coin.slice(1)}</td>
-                <td>{investment.amount}</td>
-                <td>${investment.purchasePrice.toFixed(2)}</td>
-                <td>${investment.priceNow}</td>
-                <td>{(((investment.priceNow - investment.purchasePrice) / investment.purchasePrice) * 100).toFixed(0)}%</td>
-                <td>${(investment.amount * investment.priceNow).toFixed(2)}</td>
+            <thead>
+              <tr>
+                <th>Purchase Date</th>
+                <th>Currency</th>
+                <th>Amount</th>
+                <th>Purchase Price</th>
+                <th>Current Price</th>
+                <th>Profit/Loss %</th>
+                <th>Balance</th>
               </tr>
-            ))}
-          </tbody>
-        </table>        
-        ) 
-        : (
-          <p>No investments to display.</p>
-        )}
+            </thead>
+            <tbody>
+              {userInvestments.map((investment, index) => (
+                <tr key={index}>
+                  <td>{formatedDate(investment.date)}</td>
+                  <td>{investment.Coin.charAt(0).toUpperCase() + investment.Coin.slice(1)}</td>
+                  <td>{investment.amount}</td>
+                  <td>${investment.purchasePrice.toFixed(2)}</td>
+                  <td>${investment.priceNow}</td>
+                  <td>{(((investment.priceNow - investment.purchasePrice) / investment.purchasePrice) * 100).toFixed(0)}%</td>
+                  <td>${(investment.amount * investment.priceNow).toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )
+          : (
+            <p>No investments to display.</p>
+          )}
       </div>
       <div>
-        <strong>Total Balance:</strong> ${userInvestments.reduce((total, investment) => total + (investment.amount * investment.priceNow - investment.amount * investment.purchasePrice), 0).toFixed(2)}
+        <h1 style={{ fontSize: '3rem' }}>Total Balance:</h1>
+        <p style={{ fontSize: '3rem' }}>${userInvestments.reduce((total, investment) => total + investment.amount * investment.priceNow, 0).toFixed(2)}</p>
       </div>
     </div>
   );
