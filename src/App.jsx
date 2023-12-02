@@ -1,5 +1,6 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { AuthProviderWrapper, AuthContext } from "./context/auth.context";
 
 import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
@@ -16,47 +17,73 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="app-container">
-      <Sidebar />
-      <div className="main-content">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/budgets" element={<BudgetsPage />} />
+    <AuthProviderWrapper>
+      <div className="app-container">
+        <Sidebar />
+        <div className="main-content">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/budgets" element={<BudgetsPage />} />
 
-          <Route
-            path="/profile"
-            element={
-              <IsPrivate>
-                <ProfilePage />
-              </IsPrivate>
-            }
-          />
+            <Route
+              path="/profile"
+              element={
+                <IsPrivate>
+                  <ProfilePage />
+                </IsPrivate>
+              }
+            />
 
-          <Route
-            path="/signup"
-            element={
-              <IsAnon>
-                <SignupPage />
-              </IsAnon>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <IsAnon>
-                <LoginPage />
-              </IsAnon>
-            }
-          />
-          <Route
-            path="/invest"
-            element={
-                <InvestPage />
-            }
-          />
-        </Routes>
+            <Route
+              path="/signup"
+              element={
+                <IsAnon>
+                  <SignupPage />
+                </IsAnon>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <IsAnon>
+                  <LoginPage />
+                </IsAnon>
+              }
+            />
+
+            <Route
+              path="/invest"
+              element={
+                <AuthContext.Consumer>
+                  {(authContext) =>
+                    authContext.isLoggedIn ? (
+                      <InvestPage />
+                    ) : (
+                      <Navigate to="/signup" replace />
+                    )
+                  }
+                </AuthContext.Consumer>
+              }
+            />
+            <Route
+              path="/budgets"
+              element={
+                <AuthContext.Consumer>
+                  {(authContext) =>
+                    authContext.isLoggedIn ? (
+                      <BudgetsPage />
+                    ) : (
+                      <Navigate to="/signup" replace />
+                    )
+                  }
+                </AuthContext.Consumer>
+              }
+            />
+
+          </Routes>
+        </div>
       </div>
-    </div>
+    </AuthProviderWrapper>
   );
 }
 

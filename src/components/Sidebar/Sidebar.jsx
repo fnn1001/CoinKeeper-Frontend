@@ -50,38 +50,39 @@ const Sidebar = (props) => {
         )}
 
         {/* Navigation links */}
+        {/* Navigation links */}
         <Link to="/" className="sidebar-link" onClick={() => handleLinkClick('/')}>
           Home
         </Link>
-        <Link to="/budgets" className="sidebar-link" onClick={toggleSidebar}>
+
+        {/* My Budgets link */}
+        <Link to="/budgets" className="sidebar-link" onClick={() => handleLinkClick('/budgets')}>
           My Budgets
         </Link>
-       
 
-        {/* Additional links for logged-in users */}
-        {isLoggedIn && (
-          <>
-            <Link to="/profile" className="sidebar-link" onClick={() => handleLinkClick('/profile')}>
-              Profile
-            </Link>
-          </>
-        )}
-
-        {/* Investment link */}
+        {/* My Investments link */}
         <Link to="/invest" className="sidebar-link" onClick={() => handleLinkClick('/invest')}>
           My Investments
         </Link>
 
-        {/* Login/Sign Up or Logout link based on authentication status */}
-        {!isLoggedIn ? (
+
+        {/* Additional links for logged-in users */}
+        {isLoggedIn ? (
+          <>
+            <Link to="/profile" className="sidebar-link" onClick={() => handleLinkClick('/profile')}>
+              Profile
+            </Link>
+            <Link to="/" className="sidebar-link">
+              <span onClick={logOutUser}>Logout</span>
+            </Link>
+          </>
+        ) : (
           <Link to="/signup" className="sidebar-link">
             <span onClick={() => handleLinkClick('/signup')}>Login/Sign Up</span>
           </Link>
-        ) : (
-          <Link to="/" className="sidebar-link">
-            <span onClick={logOutUser}>Logout</span>
-          </Link>
         )}
+
+        
       </div>
 
       {/* Main content container with dynamic margin based on sidebar visibility */}
