@@ -28,32 +28,11 @@
     margin: 4px;
 }
 
-.add-btn{
-    font-size: 14px;
-    border: none;
-    border-radius: 6px;
-    height: 44px;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 0 30px;
-    letter-spacing: 1px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #067d80;
-    color: white;
-    cursor: pointer;
-    transition: background-color 200ms, color 200ms;
-}
-
-.add-btn:hover {
-    background-color:#151429; 
-    color: #067d80;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-    transition: .3s ease-in-out;
-}
-
 .warning-message{
     padding-left: 4px;
     font-size: 14px;
+}
+
+.budget-card-body:hover {
+    border: none;
 }

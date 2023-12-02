@@ -34,18 +34,21 @@ export const BudgetsProvider = ({ children }) => {
     });
   }
 
-  function deleteBudget({ id }) {
+   const deleteBudget = ({ id: budgetIdToDelete }) => {
     setExpenses((prevExpenses) => {
       return prevExpenses.map((expense) => {
-        if (expense.budgetId !== id) return expense;
+        if (expense.budgetId !== budgetIdToDelete) return expense;
 
-        const updatedExpense = { ...expense, budgetId: id || UNCATEGORIZED_BUDGET_ID };
+        const updatedExpense = { ...expense, budgetId: UNCATEGORIZED_BUDGET_ID };
         return updatedExpense;
       });
-    });
+    }); 
 
     setBudgets((prevBudgets) => {
-      return prevBudgets.filter((budget) => budget.id !== id);
+      if (budgetIdToDelete !== undefined) {
+        return prevBudgets.filter((budget) => budget.id !== budgetIdToDelete);
+      }
+      return prevBudgets;
     });
   }
 

@@ -1,6 +1,8 @@
 // DEPENDENCIES
 import { currencyFormatter } from "../../utils";
-import { Button, Card, ProgressBar, Stack } from "react-bootstrap";
+import { Card, ProgressBar, Stack } from "react-bootstrap";
+
+import { Button } from "../Button/Button";
 
 // STYLES
 import "./BudgetCard.css";
@@ -28,12 +30,12 @@ const BudgetCard = (props) => {
         </div>
       )}
 
-{amount >= max / 2 && amount <= max && (
-  <div className="warning-message">
-    Slow down, you're halfway through your budget. 
-  </div>
-)}
-      <Card.Body>
+      {amount >= max / 2 && amount <= max && (
+        <div className="warning-message">
+          Slow down, you're halfway through your budget.
+        </div>
+      )}
+      <Card.Body className="budget-card-body">
         <Card.Title className="card-title">
           <div className="card-name"> {name} </div>
           <div className="card-amounts">
@@ -54,24 +56,22 @@ const BudgetCard = (props) => {
             now={amount}
           />
         )}
-       {!hideButtons && (
-          <Stack direction="horizontal" gap="2" className="mt-4 d-flex justify-content-center gap-2">
+        {!hideButtons && (
+          <Stack
+            direction="horizontal"
+            gap="2"
+            className="mt-4 d-flex justify-content-center gap-2"
+          >
             <Button
-              variant="outline-primary"
-              className="add-btn"
+              label="Add Expense"
               onClick={onAddExpenseClick}
-            >
-              Add Expense
-            </Button>
+            />
             <Button
-              variant="outline-secondary"
-              className="add-btn"
+              label="View Expenses"
               onClick={onViewExpensesClick}
-            >
-              View Expenses
-            </Button>
+            />
           </Stack>
-       )}
+        )}
       </Card.Body>
     </Card>
   );
