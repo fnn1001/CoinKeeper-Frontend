@@ -4,10 +4,13 @@ import '../HomePage/HomePage.css'
 // LOGO AND IMAGERY
 import image1 from "../../images/budget.jpg"
 import image2 from "../../images/dollars.jpg"
-import image3 from "../../images/wallet.jpg"
+import image3 from "../../images/dollar-bills.png"
+import image4 from "../../images/app-finance-tracking.jpg"
+
 import logo1 from "../../images/piechart-logo.png"
 import logo2 from "../../images/dollar-logo.png"
 import logo3 from "../../images/calculator-logo.png"
+import proto from "../../images/mobile-proto.png"
 
 // DEPENDENCIES
 import React from 'react';
@@ -27,6 +30,8 @@ const HomePage = () => {
                         <button id='landing-page-btn'> Get started for free</button>
                         </Link>
                     </div>
+                    <img src={proto} alt="mobile prototype" id="mobile-proto"/>
+
             </div>
 
             <div className='sidekick-section'>
@@ -50,8 +55,11 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
+
+            <img src={image3} id="break-image" alt="dollar bills"/>
             
             <div className='stats'>
+                <h3> Did you know? </h3>
                 <ul> 
                     <li> 30% of Americans said they’re either struggling or in crisis with their personal finances.* </li>
                     <li> The average debt per person keeps on increasing steadily over the years: in the fourth quarter of 2018, the average total debt per person was $50,090 compared to $55,480 in 2021 and $59,580 in 2022.*</li>
@@ -68,7 +76,7 @@ const HomePage = () => {
                 <div className="image-container">
                     <img src={image1} alt="Image 1" className="carousel-image" />
                     <img src={image2} alt="Image 2" className="carousel-image" />
-                    <img src={image3} alt="Image 3" className="carousel-image" />
+                    <img src={image4} alt="Image 3" className="carousel-image" />
                 </div>
 
                 <p className='credits'>  This is a full stack project developed by Feras & Lea for Ironhack. </p>
