@@ -15,12 +15,13 @@ const BudgetCard = (props) => {
     hideButtons,
     onAddExpenseClick,
     onViewExpensesClick,
+    cardClassName
   } = props;
 
   const classNames = [];
 
   return (
-    <Card className={classNames.join(" ")}>
+    <Card className={`${classNames.join(" ")} ${cardClassName || ""}`}>
       {amount > max && (
         <div className="warning-message">
           <span role="img" aria-label="warning">
