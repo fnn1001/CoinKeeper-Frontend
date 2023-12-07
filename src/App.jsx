@@ -55,13 +55,9 @@ function App() {
               path="/invest"
               element={
                 <AuthContext.Consumer>
-                  {(authContext) =>
-                    authContext.isLoggedIn ? (
+                  <IsPrivate>
                       <InvestPage />
-                    ) : (
-                      <Navigate to="/signup" replace />
-                    )
-                  }
+                     </IsPrivate> 
                 </AuthContext.Consumer>
               }
             />
@@ -69,13 +65,9 @@ function App() {
               path="/budgets"
               element={
                 <AuthContext.Consumer>
-                  {(authContext) =>
-                    authContext.isLoggedIn ? (
-                      <BudgetsPage />
-                    ) : (
-                      <Navigate to="/signup" replace />
-                    )
-                  }
+                  <IsPrivate>
+                    <BudgetsPage />
+                  </IsPrivate>
                 </AuthContext.Consumer>
               }
             />
