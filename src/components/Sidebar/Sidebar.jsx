@@ -69,9 +69,7 @@ const Sidebar = (props) => {
         {/* Additional links for logged-in users */}
         {isLoggedIn ? (
           <>
-            <Link to="/profile" className="sidebar-link" onClick={() => handleLinkClick('/profile')}>
-              Profile
-            </Link>
+            
             <Link to="/" className="sidebar-link">
               <span onClick={logOutUser}>Logout</span>
             </Link>

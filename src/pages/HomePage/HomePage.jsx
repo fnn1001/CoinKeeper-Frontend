@@ -13,10 +13,35 @@ import logo3 from "../../images/calculator-logo.png"
 import proto from "../../images/mobile-proto.png"
 
 // DEPENDENCIES
-import React from 'react';
+import React, {useContext}from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/auth.context';
+import { useNavigate } from 'react-router-dom'
 
 const HomePage = () => {
+    const { isLoggedIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleGetStartedClick = () => {
+        if (!isLoggedIn) {
+            navigate('/signup');
+        }
+        else {
+            navigate('/budgets');
+        }
+
+    }
+    const handleStartNowClick = () => {
+        if (!isLoggedIn) {
+            navigate('/signup');
+        }
+        else {
+            navigate('/invest');
+
+
+    };
+}
+
 
     return (
         <div className="page">
@@ -27,7 +52,7 @@ const HomePage = () => {
                         <h1 className='hero-header'> One coin at a time. </h1>
                         <p className='hero-subheader'> At CoinKeeper, we believe everyone deserves financial freedom. Master the art of money management, effortlessly track your expenses, and watch your savings grow. CoinKeeper — where smart budgeting meets financial freedom, one coin at a time.  </p>
                         <Link to="/signup">
-                        <button id='landing-page-btn'> Get started for free</button>
+                        <button id='landing-page-btn' onClick={handleGetStartedClick}>Get started for free</button>
                         </Link>
                     </div>
                     <img src={proto} alt="mobile prototype" id="mobile-proto"/>
@@ -68,7 +93,7 @@ const HomePage = () => {
                 <div className='stats-call-to-action'> 
                     <h2> Start owning your budget now. Use CoinKeeper. </h2>
                     <Link to="/signup">
-                    <button id='start-now-btn'> Start now </button>
+                    <button id='start-now-btn' onClick={handleStartNowClick}>Start now</button>
                     </Link>
                 </div>
             </div>

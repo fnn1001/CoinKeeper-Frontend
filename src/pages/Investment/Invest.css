@@ -1,94 +1,90 @@
-
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    background-color: #151429;
-    color: #ffffff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  h1 {
-    margin: 2rem 0;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    max-width: 400px;
-  }
-  
-  label {
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-  }
-  
-  input,
-  select {
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  #calculate-button {
-    font-size: 14px;
-    border: none;
-    border-radius: 6px;
-    height: 44px;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 0 30px;
-    letter-spacing: 1px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #067d80;
-    color: white;
-    cursor: pointer;
-    transition: background-color 200ms, color 200ms;
-  }
-
-  #calculate-button:hover{
-    background-color:#151429; 
-    color: #067d80;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-    transition: .3s ease-in-out;
+/* Container and Card Styling */
+.container {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
 }
 
-  .result {
-    margin-top: 2rem;
-  }
-  
-  .result h4 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .result p {
-    font-size: 1rem;
-  }
-  
- /* @media (min-width: 768px) {
-    .container {
-      flex-direction: row;
-    }
-  
-    .col {
-      width: 50%;
-    }
-  } */
-  
+.card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+}
 
-  #investment-card{
-    background-color: white;
-    border-radius: 8px;
-  }
+/* Form Elements */
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-select, .form-control {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Alerts and Messages */
+.alert {
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Investment Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+.button-delete-invest {
+  color: #fff;
+  background-color: #dc3545;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Total Balance Display */
+.total-balance {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+}

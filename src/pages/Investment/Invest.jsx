@@ -40,7 +40,15 @@ const Invest = () => {
     }
   }, [currency, purchaseDate]);
 
-
+  const deleteInvestment = async (investmentID) => {
+    try {
+      await axios.delete(`${process.env.REACT_APP_SERVER_URL}/invest/${investmentID}`);
+      fetchUserInvestments(); // Refresh user investments after deletion
+    } catch (error) {
+      console.error('Error deleting investment:', error);
+      setError('Error deleting investment');
+    }
+  };
   const fetchUserInvestments = async () => {
     try {
       const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/invest/user/${userID}`);
@@ -240,6 +248,7 @@ const Invest = () => {
                 <th>Current Price</th>
                 <th>Profit/Loss %</th>
                 <th>Balance</th>
+                <th>Remove</th>
               </tr>
             </thead>
             <tbody>
@@ -252,7 +261,17 @@ const Invest = () => {
                   <td>${investment.priceNow}</td>
                   <td>{(((investment.priceNow - investment.purchasePrice) / investment.purchasePrice) * 100).toFixed(0)}%</td>
                   <td>${(investment.amount * investment.priceNow).toFixed(2)}</td>
-                </tr>
+                  <td>
+                    <button
+                      className="button-delete-invest"
+                      onClick={() => {
+                        if (window.confirm("Are you sure you want to delete this investment?")) {
+                          deleteInvestment(investment._id);
+                        }
+                      }}>
+                      Remove
+                    </button>
+                  </td>                </tr>
               ))}
             </tbody>
           </table>
