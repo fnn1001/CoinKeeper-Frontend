@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // STYLES
 import "../Investment/Invest.css"
-import './Invest.css'; // Ensure this path is correct for your CSS file
+import './Invest.css';
 
 const Invest = () => {
   const [userID, setUserID] = useState('');

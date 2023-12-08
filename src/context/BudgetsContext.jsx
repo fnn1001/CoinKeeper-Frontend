@@ -1,7 +1,6 @@
 // DEPENDENCIES
 import React, { useContext, useState } from "react";
-import { v4 as uuidV4 } from "uuid";
-import useLocalStorage from "../hooks/useLocalStorage";
+import axios from "axios";
 
 const BudgetsContext = React.createContext();
 
@@ -12,50 +11,93 @@ export const useBudgets = () => {
 };
 
 export const BudgetsProvider = ({ children }) => {
-  const [budgets, setBudgets] = useLocalStorage("budgets", []);
-  const [expenses, setExpenses] = useLocalStorage("expenses", []);
+  const [budgets, setBudgets] = useState([]);
+  const [expenses, setExpenses] = useState([]);
+  const [error, setError] = useState(null);
 
-  function getBudgetExpenses(budgetId) {
-    return expenses.filter((expense) => expense.budgetId === budgetId);
-  }
+  const callAPIGetAllBudgets = async () => {
+    try {
+      const URL = `${process.env.REACT_APP_SERVER_URL}/budgets`
+      const response = await axios.get(URL);
 
-  function addExpense({ description, amount, budgetId }) {
-    setExpenses((prevExpenses) => {
-      return [...prevExpenses, { id: uuidV4(), description, amount, budgetId }];
-    });
-  }
+      setBudgets(response.data);
+      setError(null); // Reset error if successful
+    } catch (error) {
+      console.error("Error fetching budgets:", error);
+      setError("Error fetching budgets");
+    } finally {
+      callAPIGetAllExpenses()
+    }
+  };
 
-  function addBudget({ name, max }) {
-    setBudgets((prevBudgets) => {
-      if (prevBudgets.find((budget) => budget.name === name)) {
-        return prevBudgets;
-      }
-      return [...prevBudgets, { id: uuidV4(), name, max }];
-    });
-  }
+  const callAPIGetAllExpenses = async () => {
+    try{
+      const URL = `${process.env.REACT_APP_SERVER_URL}/expenses`
+      const response = await axios.get(URL);
 
-   const deleteBudget = ({ id: budgetIdToDelete }) => {
-    setExpenses((prevExpenses) => {
-      return prevExpenses.map((expense) => {
-        if (expense.budgetId !== budgetIdToDelete) return expense;
+      setExpenses(response.data)
+    } catch(e) {
+      console.error("Error fetching expenses:", error);
+      setError("Error fetching expenses");
+    }
+  };
 
-        const updatedExpense = { ...expense, budgetId: UNCATEGORIZED_BUDGET_ID };
-        return updatedExpense;
+  const callAPIAddBudget = async (budget) => {
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/budgets`,
+        budget
+      );
+      setBudgets((prevBudgets) => [...prevBudgets, response.data]);
+      setError(null); // Reset error if successful
+    } catch (error) {
+      console.error("Error adding budget:", error);
+      setError("Error adding budget");
+    }
+  };
+
+  const callAPIDeleteBudget = async (budgetId) => {
+    try {
+      await axios.delete(`${process.env.REACT_APP_SERVER_URL}/budgets/${budgetId}`);
+
+      setError(null); // Reset error if successful
+    } catch (error) {
+      console.error("Error deleting budget:", error);
+      setError("Error deleting budget");
+    } finally {
+      callAPIGetAllBudgets()
+    }
+  };
+
+  const callAPIAddExpense = async (expense) => {
+    const { name, amount, budgetId } = expense
+
+    try {
+      await axios.post(`${process.env.REACT_APP_SERVER_URL}/expenses`, {
+        name,
+        amount,
+        budgetID: budgetId
       });
-    }); 
 
-    setBudgets((prevBudgets) => {
-      if (budgetIdToDelete !== undefined) {
-        return prevBudgets.filter((budget) => budget.id !== budgetIdToDelete);
-      }
-      return prevBudgets;
-    });
+    } catch (error) {
+      
+    } finally {
+      callAPIGetAllBudgets()
+    }
+    // appel api pour ajouter une expense a un budgetId
   }
 
-  function deleteExpense({ id }) {
-    setExpenses((prevExpenses) => {
-      return prevExpenses.filter((expense) => expense.id !== id);
-    });
+  const callAPIDeleteExpense = async (expenseId) => {
+
+    try {
+      await axios.delete(`${process.env.REACT_APP_SERVER_URL}/expenses/${expenseId}`);
+
+    } catch (error) {
+      
+    } finally {
+      callAPIGetAllBudgets()
+    }
+    // appel api pour ajouter une expense a un budgetId
   }
 
   return (
@@ -63,11 +105,13 @@ export const BudgetsProvider = ({ children }) => {
       value={{
         budgets,
         expenses,
-        getBudgetExpenses,
-        addExpense,
-        addBudget,
-        deleteBudget,
-        deleteExpense,
+        error,
+        callAPIGetAllBudgets,
+        callAPIGetAllExpenses,
+        callAPIAddBudget,
+        callAPIDeleteBudget,
+        callAPIAddExpense,
+        callAPIDeleteExpense,
       }}
     >
       {children}

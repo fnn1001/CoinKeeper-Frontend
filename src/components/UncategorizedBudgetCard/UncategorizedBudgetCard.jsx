@@ -1,14 +1,12 @@
 // COMPONENTS
-import {
-  UNCATEGORIZED_BUDGET_ID,
-  useBudgets,
-} from "../../context/BudgetsContext";
+import { useEffect, useState } from "react";
 import BudgetCard from "../BudgetCard/BudgetCard";
 
 const UncategorizedBudgetCard = (props) => {
-  const { getBudgetExpenses } = useBudgets();
-  const amount = getBudgetExpenses(UNCATEGORIZED_BUDGET_ID).reduce(
-    (total, expense) => total + expense.amount,
+  const { uncategorizedExpenses } = props;
+
+  const amount = uncategorizedExpenses.reduce(
+    (acc, curr) => acc + curr.amount,
     0
   );
 

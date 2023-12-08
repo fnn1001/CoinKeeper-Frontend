@@ -9,26 +9,28 @@ import {
 } from "../../context/BudgetsContext";
 
 const AddExpenseModal = (props) => {
-  const { show, handleClose, defaultBudgetId } = props;
+  const { budget, isShow, handleClose, onAddExpense } = props;
 
-  const descriptionRef = useRef();
+  const nameRef = useRef();
   const amountRef = useRef();
   const budgetIdRef = useRef();
-  const { addExpense, budgets } = useBudgets();
+  const { budgets } = useBudgets();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addExpense({
-      description: descriptionRef.current.value,
+
+    onAddExpense({
+      name: nameRef.current.value,
       amount: parseFloat(amountRef.current.value),
       budgetId: budgetIdRef.current.value,
     });
+
     handleClose();
   };
-
+  
   return (
     <div>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={isShow} onHide={handleClose}>
         <Form onSubmit={handleSubmit}>
           <Modal.Header closeButton>
             <Modal.Title> New Expense </Modal.Title>
@@ -37,7 +39,7 @@ const AddExpenseModal = (props) => {
           <Modal.Body>
             <Form.Group className="mb-3" controlId="description">
               <Form.Label> Description </Form.Label>
-              <Form.Control ref={descriptionRef} type="text" required />
+              <Form.Control ref={nameRef} type="text" required />
             </Form.Group>
             <Form.Group className="mb-3" controlId="amount">
               <Form.Label> Amount </Form.Label>
@@ -51,10 +53,10 @@ const AddExpenseModal = (props) => {
             </Form.Group>
             <Form.Group className="mb-3" controlId="budgetId">
               <Form.Label> Budget </Form.Label>
-              <Form.Select defaultValue={defaultBudgetId} ref={budgetIdRef}>
+              <Form.Select defaultValue={budget?._id || UNCATEGORIZED_BUDGET_ID} ref={budgetIdRef}>
                 <option id={UNCATEGORIZED_BUDGET_ID}> Uncategorized </option>
-                {budgets.map(budget => (
-                  <option key={budget.id} value={budget.id}>
+                {budgets.map((budget, index) => (
+                  <option key={index} value={budget._id}>
                     {budget.name}
                   </option>
                 ))}

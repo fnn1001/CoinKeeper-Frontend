@@ -62,14 +62,12 @@ const BudgetCard = (props) => {
             gap="2"
             className="mt-4 d-flex justify-content-center gap-2"
           >
-            <Button
-              label="Add Expense"
-              onClick={onAddExpenseClick}
-            />
-            <Button
-              label="View Expenses"
-              onClick={onViewExpensesClick}
-            />
+            {onAddExpenseClick && (
+              <Button label="Add Expense" onClick={onAddExpenseClick} />
+            )}
+            {onViewExpensesClick && (
+              <Button label="View Expenses" onClick={onViewExpensesClick} />
+            )}
           </Stack>
         )}
       </Card.Body>

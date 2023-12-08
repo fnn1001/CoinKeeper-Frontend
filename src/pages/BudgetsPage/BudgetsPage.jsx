@@ -1,8 +1,8 @@
 // STYLES
 import "./BudgetsPage.css";
-import "../../components/Button/Button.css"
+import "../../components/Button/Button.css";
 import { Stack, Container, Button, Form } from "react-bootstrap";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // COMPONENTS
 import BudgetCard from "../../components/BudgetCard/BudgetCard";
@@ -21,33 +21,84 @@ import {
 const BudgetsPage = () => {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false);
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
-  const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState();
-  const [addBudgetMondal, setAddBudgetModal] = useState()
-  const [viewExpensesModalBudgetId, setViewExpensesModalBudgetId] = useState();
-
+  const [showViewExpenseModal, setShowViewExpenseModal] = useState(false);
+  const [currentBudget, setCurrentBudget] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const { budgets, getBudgetExpenses } = useBudgets();
 
-  const openAddExpenseModal = (budgetId) => {
-    console.log("open add expense modal clicked")
+  const {
+    budgets,
+    expenses,
+    callAPIGetAllBudgets,
+    callAPIDeleteBudget,
+    callAPIDeleteExpense,
+    callAPIAddBudget,
+    callAPIAddExpense,
+  } = useBudgets();
+
+  useEffect(() => {
+    callAPIGetAllBudgets();
+  }, []);
+
+  useEffect(() => {
+    if (currentBudget) {
+      const currentBudgetUpdated = budgets.find(
+        (budget) => budget._id === currentBudget._id
+      );
+
+      setCurrentBudget(currentBudgetUpdated);
+    }
+  }, [budgets]);
+
+  const handleAddBudget = (expense) => {
+    callAPIAddBudget(expense);
+  };
+
+  const handleAddExpense = (expense) => {
+    callAPIAddExpense(expense);
+  };
+
+  const handleOpenAddExpenseModal = (budget) => {
+    setCurrentBudget(budget)
     setShowAddExpenseModal(true);
-    setAddExpenseModalBudgetId(budgetId);
   };
 
-  const openAddBudgetModal = (budgetId) => {
-    console.log("open add budget modal clicked")
-    setShowAddBudgetModal(true)
-    setAddBudgetModal(budgetId) 
+  const handleOpenAddBudgetModal = () => {
+    setShowAddBudgetModal(true);
   };
 
-  const openViewExpensesModal = (budgetId) => {
-    console.log("open view expenses modal clicked");
-    setViewExpensesModalBudgetId(budgetId);
+  const handleOpenViewExpensesModal = (budget) => {
+    setShowViewExpenseModal(true)
+    
+    if (budget === UNCATEGORIZED_BUDGET_ID) {
+      const uncategorizedExpenses = expenses.filter(
+        (expense) =>
+        !expense.budgetID || expense.budgetID === UNCATEGORIZED_BUDGET_ID
+      );
+
+      setCurrentBudget({
+        name: "Uncategorized",
+        id: UNCATEGORIZED_BUDGET_ID,
+        expenses: uncategorizedExpenses,
+      });
+    } else {
+      setCurrentBudget(budget);
+    }
   };
+
+  const handleViewExpenseModalClose = () => {
+    setShowViewExpenseModal(false)
+    setCurrentBudget(null)
+  } 
+    
 
   // Filter budgets based on search query
   const filteredBudgets = budgets.filter((budget) =>
     budget.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const uncategorizedExpenses = expenses.filter(
+    (expense) =>
+      !expense.budgetID || expense.budgetID === UNCATEGORIZED_BUDGET_ID
   );
 
   return (
@@ -55,67 +106,71 @@ const BudgetsPage = () => {
       <Container className="budget-container">
         <Stack direction="horizontal" gap="2" className="budgets-wrapper">
           <p className="budget-title"> Budgets </p>
-          <Button
-            className="buttonWrapper"
-            onClick={openAddBudgetModal}
-          >
+          <Button className="buttonWrapper" onClick={handleOpenAddBudgetModal}>
             Add Budget
           </Button>
-          <Button
-            className="buttonWrapper"
-            onClick={openAddExpenseModal}
-          >
+          <Button className="buttonWrapper" onClick={handleOpenAddExpenseModal}>
             Add Expense
           </Button>
         </Stack>
         <div className="search-category">
-          <Form.Control style={{width: "630px"}}
+          <Form.Control
+            style={{ width: "630px" }}
             type="text"
             placeholder="Search budget"
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
         <div className="budgets-list">
-          {filteredBudgets.map((budget) => {
-            const amount = getBudgetExpenses(budget.id).reduce(
+          {filteredBudgets.map((budget, index) => {
+            const amount = budget.expenses.reduce(
               (total, expense) => total + expense.amount,
               0
             );
 
             return (
               <BudgetCard
-                key={budget.id}
+                key={index}
                 name={budget.name}
                 amount={amount}
                 max={budget.max}
-                onAddExpenseClick={() => openAddExpenseModal(budget.id)}
-                onViewExpensesClick={() =>
-                  openViewExpensesModal(budget.id)
-                }
+                onAddExpenseClick={() => handleOpenAddExpenseModal(budget)}
+                onViewExpensesClick={() => handleOpenViewExpensesModal(budget)}
               />
             );
           })}
           <UncategorizedBudgetCard
-            onAddExpenseClick={() => openAddExpenseModal(UNCATEGORIZED_BUDGET_ID)}
+            uncategorizedExpenses={uncategorizedExpenses}
+            onAddExpenseClick={() =>
+              handleOpenAddExpenseModal(UNCATEGORIZED_BUDGET_ID)
+            }
             onViewExpensesClick={() =>
-              openViewExpensesModal(UNCATEGORIZED_BUDGET_ID)
-            } 
+              handleOpenViewExpensesModal(UNCATEGORIZED_BUDGET_ID)
+            }
           />
-          <TotalBudgetCard />
+          <TotalBudgetCard
+            budgets={budgets}
+            unCategorizedExpenses={uncategorizedExpenses}
+          />
         </div>
       </Container>
       <AddBudgetModal
-        show={showAddBudgetModal}
+        isShow={showAddBudgetModal}
         handleClose={() => setShowAddBudgetModal(false)}
+        onAddBudget={handleAddBudget}
       />
       <AddExpenseModal
-        show={showAddExpenseModal}
-        defaultBudgetId={addExpenseModalBudgetId}
+        budget={currentBudget}
+        isShow={showAddExpenseModal}
         handleClose={() => setShowAddExpenseModal(false)}
+        onAddExpense={handleAddExpense}
       />
       <ViewExpensesModal
-        budgetId={viewExpensesModalBudgetId}
-        handleClose={() => setViewExpensesModalBudgetId(false)}
+        isShow={showViewExpenseModal}
+        budget={currentBudget}
+        onClose={handleViewExpenseModalClose}
+        onDeleteBudget={callAPIDeleteBudget}
+        onDeleteExpense={callAPIDeleteExpense}
       />
     </div>
   );

@@ -1,6 +1,6 @@
 import BudgetCard from "../../../../components/BudgetCard/BudgetCard";
 
-import { UNCATEGORIZED_BUDGET_ID, useBudgets } from "../../../../context/BudgetsContext";
+import { useBudgets } from "../../../../context/BudgetsContext";
 
 export const BudgetList = (props) => {
   const { budgets: budgetsProps, onAddExpense, onViewExpenses } = props;
