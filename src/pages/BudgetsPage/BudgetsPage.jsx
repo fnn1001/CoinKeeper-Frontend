@@ -1,5 +1,6 @@
 // STYLES
 import "./BudgetsPage.css";
+import "../../components/Button/Button.css"
 import { Stack, Container, Button, Form } from "react-bootstrap";
 import { useState } from "react";
 
@@ -51,39 +52,30 @@ const BudgetsPage = () => {
 
   return (
     <div>
-      <Container className="my-4">
+      <Container className="budget-container">
         <Stack direction="horizontal" gap="2" className="budgets-wrapper">
           <p className="budget-title"> Budgets </p>
           <Button
-            variant="primary"
-            className="add-button"
+            className="buttonWrapper"
             onClick={openAddBudgetModal}
           >
             Add Budget
           </Button>
           <Button
-            variant="outline-primary"
-            className="add-button"
+            className="buttonWrapper"
             onClick={openAddExpenseModal}
           >
             Add Expense
           </Button>
         </Stack>
         <div className="search-category">
-          <Form.Control
+          <Form.Control style={{width: "630px"}}
             type="text"
             placeholder="Search budget"
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-            gap: "1rem",
-            alignItems: "flex-start",
-          }}
-        >
+        <div className="budgets-list">
           {filteredBudgets.map((budget) => {
             const amount = getBudgetExpenses(budget.id).reduce(
               (total, expense) => total + expense.amount,
